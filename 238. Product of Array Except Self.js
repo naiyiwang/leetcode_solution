@@ -42,3 +42,20 @@ var productExceptSelf = function(nums) {
     }
     return output;
 };
+
+// better better
+var productExceptSelf = function(nums) {
+    var left = 1;
+    var right = 1;
+    var len = nums.length;
+    var output = Array.apply(null, Array(len)).map(function() { return 1; });
+
+    for (var i = 0; i < len; i++) {
+        output[i] *= left;
+        output[len - i - 1] *= right;
+        left *= nums[i];
+        right *= nums[len - i - 1];
+    }
+
+    return output;
+};
