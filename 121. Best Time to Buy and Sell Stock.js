@@ -9,6 +9,7 @@ var maxProfit = function(prices) {
     var min = prices[0] || 0;
 
     function checkProfit() {
+        // profit = Math.max(profit, max - min);
         if (max - min > profit) profit = max - min;
     }
 
