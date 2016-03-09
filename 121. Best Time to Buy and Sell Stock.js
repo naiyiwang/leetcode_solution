@@ -28,3 +28,20 @@ var maxProfit = function(prices) {
 };
 
 console.log(maxProfit([3,2,6,5,0,3]));
+
+
+// better solution
+var maxProfit = function(prices) {
+    var profit = 0;
+    var max = prices[0] || 0;
+    var min = prices[0] || 0;
+
+    for (var i = 1; i < prices.length; i++) {
+        min = Math.min(min, prices[i]);
+        // 关键：用（当前值 - 历史最小值） 而不是 （历史最大值 - 历史最小值）
+        profit = Math.max(profit, prices[i] - min);
+    }
+
+    return profit;
+};
+
